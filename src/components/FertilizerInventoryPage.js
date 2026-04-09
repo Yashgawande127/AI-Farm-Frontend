@@ -265,76 +265,76 @@ const FertilizerInventoryPage = () => {
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 sm:mb-10">
+          <div className="text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
                 Fertilizer Inventory
               </span>
             </h1>
-            <p className="text-xl text-gray-600">
-              Comprehensive tracking of fertilizer stock, composition, and compatibility
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl">
+              Comprehensive tracking of stock, composition, and compatibility
             </p>
           </div>
           <button
             onClick={() => setShowAddModal(true)}
-            className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-200 flex items-center"
+            className="w-full lg:w-auto bg-green-600 text-white px-8 py-4 rounded-2xl hover:bg-green-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
-            Add Fertilizer
+            <span className="font-bold">Add Fertilizer</span>
           </button>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
             </div>
-            <div className="text-2xl font-bold text-gray-900">{fertilizers.length}</div>
-            <div className="text-sm text-gray-600">Total Products</div>
+            <div className="text-3xl font-black text-gray-900 mb-1">{fertilizers.length}</div>
+            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider">Total Products</div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
             </div>
-            <div className="text-2xl font-bold text-gray-900">₹{totalInventoryValue.toFixed(2)}</div>
-            <div className="text-sm text-gray-600">Total Value</div>
+            <div className="text-3xl font-black text-gray-900 mb-1">₹{totalInventoryValue.toLocaleString()}</div>
+            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider">Total Value</div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
             </div>
-            <div className="text-2xl font-bold text-gray-900">{lowStockItems.length}</div>
-            <div className="text-sm text-gray-600">Low Stock Alerts</div>
+            <div className="text-3xl font-black text-gray-900 mb-1">{lowStockItems.length}</div>
+            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider">Low Stock</div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
                 <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
             </div>
-            <div className="text-2xl font-bold text-gray-900">{organicItems.length}</div>
-            <div className="text-sm text-gray-600">Organic Certified</div>
+            <div className="text-3xl font-black text-gray-900 mb-1">{organicItems.length}</div>
+            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider">Organic</div>
           </div>
         </div>
 
@@ -402,7 +402,7 @@ const FertilizerInventoryPage = () => {
         </div>
 
         {/* Fertilizer Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredFertilizers.map((fertilizer) => (
             <div key={fertilizer.id} className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
               {/* Header */}

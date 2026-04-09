@@ -206,13 +206,13 @@ const SeedsManagementPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50">
       <Header />
-      <div className="container mx-auto px-6 py-10">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Page Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-6 mb-8">
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="relative">
-              <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl flex items-center justify-center shadow-xl">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl flex items-center justify-center shadow-xl">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
@@ -223,18 +223,18 @@ const SeedsManagementPage = () => {
               </div>
             </div>
             <div className="text-left">
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-slate-800 via-gray-700 to-slate-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-800 via-gray-700 to-slate-600 bg-clip-text text-transparent mb-2">
                 Seeds Management
               </h1>
-              <div className="text-2xl font-semibold text-emerald-600">System</div>
+              <div className="text-xl sm:text-2xl font-semibold text-emerald-600">System</div>
             </div>
           </div>
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl text-gray-600 leading-relaxed mb-6">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6">
               Transform traditional seed management into a sophisticated tracking ecosystem with comprehensive variety database, 
               intelligent seasonal planning, quality assurance protocols, and advanced performance analytics.
             </p>
-            <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm text-gray-500">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                 <span>Real-time Monitoring</span>
@@ -252,8 +252,8 @@ const SeedsManagementPage = () => {
         </div>
 
         {/* Dashboard Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          <div className="relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-bl-3xl"></div>
             <div className="flex items-center gap-6">
               <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">

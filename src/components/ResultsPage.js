@@ -64,29 +64,29 @@ const ResultsPage = () => {
         <Header />
         
         {/* Navigation */}
-        <nav className="mb-12">
-          <div className="flex justify-between items-center">
+        <nav className="mb-8 sm:mb-12 px-2 sm:px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
             <Link 
               to="/"
-              className="inline-flex items-center gap-3 bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-medium hover:bg-gray-50 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center justify-center gap-3 bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 shadow-md sm:shadow-lg"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Back to Analysis
+              <span>Back to Analysis</span>
             </Link>
             
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link 
                 to="/"
-                className="px-6 py-3 rounded-xl font-semibold text-gray-700 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 transition-all duration-300 flex items-center gap-2 shadow-md"
+                className="flex-1 px-6 py-3 rounded-xl font-bold text-gray-700 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
               >
                 <span className="text-emerald-500">🎯</span>
                 New Analysis
               </Link>
               <Link 
                 to="/reference"
-                className="px-6 py-3 rounded-xl font-semibold text-gray-700 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 transition-all duration-300 flex items-center gap-2 shadow-md"
+                className="flex-1 px-6 py-3 rounded-xl font-bold text-gray-700 hover:text-gray-900 bg-white hover:bg-gray-50 border border-gray-200 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
               >
                 <span className="text-blue-500">📚</span>
                 Crops Guide
@@ -96,21 +96,21 @@ const ResultsPage = () => {
         </nav>
 
         {/* Results Section */}
-        <main>
-          <div className="mb-12">
+        <main className="px-2 sm:px-4">
+          <div className="mb-10 sm:mb-12">
             <div className="text-center">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg transform sm:rotate-3">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h2 className="text-4xl font-bold text-gray-800">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
                   Analysis Complete
                 </h2>
               </div>
-              <p className="text-gray-600 text-xl leading-relaxed max-w-3xl mx-auto">
-                Our AI has analyzed your soil and environmental data to provide optimal crop recommendations
+              <p className="text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
+                Our AI has analyzed your data to provide optimal crop recommendations
               </p>
             </div>
           </div>

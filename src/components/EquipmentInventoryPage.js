@@ -199,27 +199,27 @@ const EquipmentInventoryPage = () => {
         <Header />
         
         {/* Page Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 sm:mb-10">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
             <Link 
               to="/machinery" 
-              className="mr-4 p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="p-2 sm:p-3 bg-white rounded-xl shadow-md border border-gray-200 text-gray-600 hover:text-gray-900 transition-all hover:scale-105"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
             <div>
-              <h1 className="text-4xl font-bold text-gray-900">Equipment Inventory</h1>
-              <p className="text-gray-600 text-lg">Manage your complete equipment fleet</p>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">Equipment <span className="text-blue-600">Inventory</span></h1>
+              <p className="text-lg sm:text-xl text-gray-600">Manage your complete equipment fleet</p>
             </div>
           </div>
           
           <button
             onClick={() => setShowAddForm(true)}
-            className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition duration-200 shadow-lg"
+            className="w-full lg:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3"
           >
-            <svg className="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Add Equipment

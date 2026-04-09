@@ -23,7 +23,14 @@ const FinancialManagementPage = () => {
     try {
       setLoading(true);
       const overview = await financialService.getFinancialOverview();
-      setFinancialOverview(overview);
+      setFinancialOverview(overview || {
+        totalBalance: 0,
+        monthlyIncome: 0,
+        monthlyExpenses: 0,
+        savingsGoals: [],
+        recentTransactions: [],
+        upcomingPayments: []
+      });
     } catch (error) {
       console.error('Error loading financial overview:', error);
       setError('Failed to load financial data');
@@ -85,7 +92,7 @@ const FinancialManagementPage = () => {
               <div>
                 <p className="text-sm font-medium text-gray-600">Total Balance</p>
                 <p className="text-3xl font-bold text-green-600">
-                  ₹{financialOverview.totalBalance.toLocaleString('en-IN')}
+                  ₹{(financialOverview?.totalBalance ?? 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -99,7 +106,7 @@ const FinancialManagementPage = () => {
               <div>
                 <p className="text-sm font-medium text-gray-600">Monthly Income</p>
                 <p className="text-3xl font-bold text-blue-600">
-                  ₹{financialOverview.monthlyIncome.toLocaleString('en-IN')}
+                  ₹{(financialOverview?.monthlyIncome ?? 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -113,7 +120,7 @@ const FinancialManagementPage = () => {
               <div>
                 <p className="text-sm font-medium text-gray-600">Monthly Expenses</p>
                 <p className="text-3xl font-bold text-red-600">
-                  ₹{financialOverview.monthlyExpenses.toLocaleString('en-IN')}
+                  ₹{(financialOverview?.monthlyExpenses ?? 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
@@ -131,7 +138,7 @@ const FinancialManagementPage = () => {
                     ? 'text-green-600' 
                     : 'text-red-600'
                 }`}>
-                  ₹{(financialOverview.monthlyIncome - financialOverview.monthlyExpenses).toLocaleString('en-IN')}
+                  ₹{((financialOverview?.monthlyIncome ?? 0) - (financialOverview?.monthlyExpenses ?? 0)).toLocaleString('en-IN')}
                 </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -232,7 +239,7 @@ const FinancialManagementPage = () => {
                       <p className={`font-bold ${
                         transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
                       }`}>
-                        {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString('en-IN')}
+                        {transaction.type === 'income' ? '+' : '-'}₹{(transaction?.amount ?? 0).toLocaleString('en-IN')}
                       </p>
                       <p className="text-sm text-gray-600">{transaction.date}</p>
                     </div>
@@ -272,7 +279,7 @@ const FinancialManagementPage = () => {
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-medium text-gray-900">{goal.name}</h4>
                       <span className="text-sm text-gray-600">
-                        ₹{goal.saved.toLocaleString('en-IN')} / ₹{goal.target.toLocaleString('en-IN')}
+                        ₹{(goal?.saved ?? 0).toLocaleString('en-IN')} / ₹{(goal?.target ?? 0).toLocaleString('en-IN')}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">

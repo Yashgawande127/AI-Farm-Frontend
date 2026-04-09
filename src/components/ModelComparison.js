@@ -383,12 +383,13 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
               </div>
               
               {/* Bar Chart Container */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 sm:p-6 border border-gray-100 overflow-x-auto">
                 <svg 
                   width="100%" 
-                  height="400" 
+                  height="auto" 
                   viewBox="0 0 800 400"
-                  className="overflow-visible"
+                  preserveAspectRatio="xMidYMid meet"
+                  className="min-w-[600px] lg:min-w-0"
                 >
                   {/* Background */}
                   <rect width="800" height="400" fill="transparent"/>
@@ -402,7 +403,7 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                     return (
                       <g key={index}>
                         <line x1="80" y1={y} x2="720" y2={y} stroke="#f3f4f6" strokeWidth="1"/>
-                        <text x="70" y={y + 4} textAnchor="end" fontSize="12" fill="#6b7280">
+                        <text x="75" y={y + 4} textAnchor="end" fontSize="12" fill="#6b7280" className="hidden sm:block">
                           {value}%
                         </text>
                       </g>
@@ -410,7 +411,7 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                   })}
                   
                   {/* Y-axis label */}
-                  <text x="25" y="180" textAnchor="middle" fontSize="14" fill="#374151" fontWeight="600" transform="rotate(-90, 25, 180)">
+                  <text x="25" y="180" textAnchor="middle" fontSize="14" fill="#374151" fontWeight="600" transform="rotate(-90, 25, 180)" className="hidden sm:block">
                     Accuracy (%)
                   </text>
                   
@@ -422,8 +423,8 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                   
                   {/* Bars */}
                   {models.map((model, index) => {
-                    const barWidth = 80;
-                    const barSpacing = 90;
+                    const barWidth = 60; // Reduced width for better fit
+                    const barSpacing = 85; 
                     const x = 100 + index * barSpacing;
                     const accuracy = model.accuracy * 100;
                     const barHeight = accuracy * 2.8;
@@ -473,9 +474,9 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                           x={x + barWidth/2} 
                           y={y - 8} 
                           textAnchor="middle" 
-                          fontSize="12" 
-                          fontWeight="600"
-                          fill="#374151"
+                          fontSize="10" 
+                          fontWeight="700"
+                          fill="#111827"
                           className="transition-all duration-1000 ease-out"
                           style={{
                             opacity: animateChart ? 1 : 0,
@@ -489,9 +490,9 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                         <text 
                           x={x + barWidth/2} 
                           y={340} 
-                          textAnchor="middle" 
-                          fontSize="11" 
-                          fontWeight="500"
+                          textAnchor="end" 
+                          fontSize="10" 
+                          fontWeight="600"
                           fill="#4b5563"
                           transform={`rotate(-45, ${x + barWidth/2}, 340)`}
                         >
@@ -502,8 +503,8 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                   })}
                   
                   {/* Title */}
-                  <text x="400" y="25" textAnchor="middle" fontSize="16" fontWeight="600" fill="#1f2937">
-                    Deep Learning Models Performance for Crop Yield Prediction
+                  <text x="400" y="25" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827" className="hidden sm:block">
+                    Performance Analysis for {predictedCrop}
                   </text>
                 </svg>
               </div>

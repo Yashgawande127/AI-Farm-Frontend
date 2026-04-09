@@ -113,30 +113,38 @@ const ProfilePage = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             {/* Profile Header */}
-            <div className="bg-gradient-to-r from-green-500 to-blue-600 px-8 py-12 text-white">
-              <div className="flex items-center space-x-6">
-                <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold backdrop-blur">
+            <div className="bg-gradient-to-r from-green-600 to-emerald-700 px-6 sm:px-12 py-10 sm:py-16 text-white relative overflow-hidden">
+              {/* Subtle decorative elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-400/20 rounded-full -ml-24 -mb-24 blur-2xl"></div>
+              
+              <div className="relative flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+                <div className="w-28 h-28 sm:w-36 sm:h-36 bg-white/20 rounded-[2.5rem] flex items-center justify-center text-3xl font-black backdrop-blur-md border-4 border-white/30 shadow-2xl overflow-hidden transform hover:rotate-3 transition-transform duration-500">
                   {profileData.avatar ? (
                     <img 
                       src={profileData.avatar} 
                       alt="Profile" 
-                      className="w-full h-full rounded-full object-cover"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
-                    getInitials(profileData.firstName, profileData.lastName) || '👤'
+                    <span className="text-4xl">{getInitials(profileData.firstName, profileData.lastName) || '👤'}</span>
                   )}
                 </div>
-                <div>
-                  <h1 className="text-3xl font-bold">
+                <div className="text-center sm:text-left">
+                  <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-2">
                     {profileData.firstName && profileData.lastName 
                       ? `${profileData.firstName} ${profileData.lastName}`
-                      : profileData.email || 'User Profile'
+                      : profileData.email?.split('@')[0] || 'Member Profile'
                     }
                   </h1>
-                  {profileData.farmName && (
-                    <p className="text-xl opacity-90 mt-1">{profileData.farmName}</p>
-                  )}
-                  <p className="opacity-75 mt-2">{profileData.email}</p>
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 opacity-90">
+                    {profileData.farmName && (
+                      <span className="flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-sm font-bold border border-white/20">
+                        🚜 {profileData.farmName}
+                      </span>
+                    )}
+                    <span className="text-sm font-medium opacity-80">{profileData.email}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -155,37 +163,31 @@ const ProfilePage = () => {
               )}
 
               {/* Action Buttons */}
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-800">Profile Information</h2>
-                <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 pb-6 border-b border-gray-100">
+                <h2 className="text-2xl font-black text-gray-900 tracking-tight">Account Details</h2>
+                <div className="flex w-full sm:w-auto gap-3">
                   {!isEditing ? (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 flex items-center gap-2"
+                      className="flex-1 sm:flex-none px-6 py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition duration-300 shadow-lg shadow-emerald-200 flex items-center justify-center gap-2"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                       Edit Profile
                     </button>
                   ) : (
-                    <div className="flex space-x-2">
+                    <div className="flex w-full sm:w-auto gap-3">
                       <button
                         onClick={handleSave}
                         disabled={loading}
-                        className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-200 disabled:opacity-50 flex items-center gap-2"
+                        className="flex-1 sm:flex-none px-6 py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition duration-300 disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
                       >
                         {loading ? (
-                          <>
-                            <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Saving...
-                          </>
+                          <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
                         ) : (
                           <>
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                             Save Changes
@@ -194,7 +196,7 @@ const ProfilePage = () => {
                       </button>
                       <button
                         onClick={handleCancel}
-                        className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-200"
+                        className="flex-1 sm:flex-none px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-2xl hover:bg-gray-200 transition duration-300 border-2 border-transparent hover:border-gray-300"
                       >
                         Cancel
                       </button>

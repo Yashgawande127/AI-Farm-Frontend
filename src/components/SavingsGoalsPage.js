@@ -74,10 +74,25 @@ const SavingsGoalsPage = () => {
         financialService.getExpansionPlans()
       ]);
       
-      setSavingsGoals(goals);
-      setEmergencyFund(emergency);
-      setSeasonalPlanning(seasonal);
-      setExpansionPlans(expansions);
+      setSavingsGoals(goals || []);
+      setEmergencyFund(emergency || {
+        currentAmount: 0,
+        targetAmount: 50000,
+        monthlyExpenses: 0,
+        monthsOfExpenses: 6,
+        autoContribute: false,
+        contributionAmount: 0
+      });
+      setSeasonalPlanning(seasonal || {
+        currentSavings: 0,
+        springNeeds: 0,
+        summerNeeds: 0,
+        fallNeeds: 0,
+        winterNeeds: 0,
+        totalNeeded: 0,
+        projectedIncome: 0
+      });
+      setExpansionPlans(expansions || []);
     } catch (error) {
       console.error('Error loading savings data:', error);
       setError('Failed to load savings data');
@@ -257,7 +272,7 @@ const SavingsGoalsPage = () => {
               <div>
                 <p className="text-purple-100">Total Saved</p>
                 <p className="text-3xl font-bold">
-                  ₹{savingsGoals.reduce((sum, goal) => sum + goal.currentAmount, 0).toLocaleString('en-IN')}
+                  ₹{savingsGoals.reduce((sum, goal) => sum + (goal.currentAmount ?? 0), 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <span className="text-4xl">💰</span>
@@ -269,7 +284,7 @@ const SavingsGoalsPage = () => {
               <div>
                 <p className="text-pink-100">Total Target</p>
                 <p className="text-3xl font-bold">
-                  ₹{savingsGoals.reduce((sum, goal) => sum + goal.targetAmount, 0).toLocaleString('en-IN')}
+                  ₹{savingsGoals.reduce((sum, goal) => sum + (goal.targetAmount ?? 0), 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <span className="text-4xl">🎯</span>
@@ -291,7 +306,7 @@ const SavingsGoalsPage = () => {
               <div>
                 <p className="text-orange-100">Emergency Fund</p>
                 <p className="text-3xl font-bold">
-                  ₹{emergencyFund.currentAmount.toLocaleString('en-IN')}
+                  ₹{(emergencyFund?.currentAmount ?? 0).toLocaleString('en-IN')}
                 </p>
               </div>
               <span className="text-4xl">🆘</span>
@@ -491,8 +506,8 @@ const SavingsGoalsPage = () => {
                             
                             <div className="mb-3">
                             <div className="flex justify-between text-sm text-gray-600 mb-1">
-                              <span>₹{goal.currentAmount.toLocaleString('en-IN')} saved</span>
-                              <span>₹{goal.targetAmount.toLocaleString('en-IN')} target</span>
+                              <span>₹{(goal.currentAmount ?? 0).toLocaleString('en-IN')} saved</span>
+                              <span>₹{(goal.targetAmount ?? 0).toLocaleString('en-IN')} target</span>
                             </div>
                               <div className="w-full bg-gray-200 rounded-full h-2">
                                 <div 
@@ -507,7 +522,7 @@ const SavingsGoalsPage = () => {
                                 <p>Days remaining: <span className="font-medium">{daysLeft > 0 ? daysLeft : 'Overdue'}</span></p>
                               </div>
                               <div>
-                                <p>Monthly needed: <span className="font-medium">₹{monthlyNeeded.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span></p>
+                                <p>Monthly needed: <span className="font-medium">₹{(monthlyNeeded ?? 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span></p>
                               </div>
                             </div>
 
@@ -566,13 +581,13 @@ const SavingsGoalsPage = () => {
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-600">Current Amount</span>
                           <span className="text-2xl font-bold text-green-600">
-                            ₹{emergencyFund.currentAmount.toLocaleString('en-IN')}
+                            ₹{(emergencyFund?.currentAmount ?? 0).toLocaleString('en-IN')}
                           </span>
                         </div>
                         <div className="flex justify-between items-center mb-3">
                           <span className="text-gray-600">Target Amount</span>
                           <span className="text-lg font-semibold text-gray-900">
-                            ₹{emergencyFund.targetAmount.toLocaleString('en-IN')}
+                            ₹{(emergencyFund?.targetAmount ?? 0).toLocaleString('en-IN')}
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
@@ -591,8 +606,8 @@ const SavingsGoalsPage = () => {
                       <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
                         <h4 className="font-medium text-yellow-900 mb-2">Coverage Analysis</h4>
                         <div className="text-sm text-yellow-800">
-                          <p>Monthly Expenses: ₹{emergencyFund.monthlyExpenses.toLocaleString('en-IN')}</p>
-                          <p>Months Covered: {(emergencyFund.currentAmount / emergencyFund.monthlyExpenses).toFixed(1)}</p>
+                          <p>Monthly Expenses: ₹{(emergencyFund?.monthlyExpenses ?? 0).toLocaleString('en-IN')}</p>
+                          <p>Months Covered: {(emergencyFund?.currentAmount / (emergencyFund?.monthlyExpenses || 1)).toFixed(1)}</p>
                           <p className="mt-2 font-medium">
                             Recommendation: {emergencyFund.monthsOfExpenses} months of expenses
                           </p>
@@ -713,7 +728,7 @@ const SavingsGoalsPage = () => {
                       <h4 className="font-medium text-gray-900">Spring</h4>
                       <p className="text-sm text-gray-600">Planting Season</p>
                       <p className="text-lg font-semibold text-green-600">
-                        ₹{seasonalPlanning.springNeeds.toLocaleString('en-IN')}
+                        ₹{(seasonalPlanning?.springNeeds ?? 0).toLocaleString('en-IN')}
                       </p>
                     </div>
                     <div className="bg-white rounded-lg p-4 text-center">
@@ -721,7 +736,7 @@ const SavingsGoalsPage = () => {
                       <h4 className="font-medium text-gray-900">Summer</h4>
                       <p className="text-sm text-gray-600">Growing Season</p>
                       <p className="text-lg font-semibold text-yellow-600">
-                        ₹{seasonalPlanning.summerNeeds.toLocaleString('en-IN')}
+                        ₹{(seasonalPlanning?.summerNeeds ?? 0).toLocaleString('en-IN')}
                       </p>
                     </div>
                     <div className="bg-white rounded-lg p-4 text-center">
@@ -729,7 +744,7 @@ const SavingsGoalsPage = () => {
                       <h4 className="font-medium text-gray-900">Fall</h4>
                       <p className="text-sm text-gray-600">Harvest Season</p>
                       <p className="text-lg font-semibold text-orange-600">
-                        ₹{seasonalPlanning.fallNeeds.toLocaleString('en-IN')}
+                        ₹{(seasonalPlanning?.fallNeeds ?? 0).toLocaleString('en-IN')}
                       </p>
                     </div>
                     <div className="bg-white rounded-lg p-4 text-center">
@@ -737,7 +752,7 @@ const SavingsGoalsPage = () => {
                       <h4 className="font-medium text-gray-900">Winter</h4>
                       <p className="text-sm text-gray-600">Planning Season</p>
                       <p className="text-lg font-semibold text-blue-600">
-                        ₹{seasonalPlanning.winterNeeds.toLocaleString('en-IN')}
+                        ₹{(seasonalPlanning?.winterNeeds ?? 0).toLocaleString('en-IN')}
                       </p>
                     </div>
                   </div>
@@ -748,29 +763,29 @@ const SavingsGoalsPage = () => {
                       <div>
                         <p className="text-gray-600">Total Expenses Needed</p>
                         <p className="text-xl font-bold text-red-600">
-                          ₹{seasonalPlanning.totalNeeded.toLocaleString('en-IN')}
+                          ₹{(seasonalPlanning?.totalNeeded ?? 0).toLocaleString('en-IN')}
                         </p>
                       </div>
                       <div>
                         <p className="text-gray-600">Projected Income</p>
                         <p className="text-xl font-bold text-green-600">
-                          ₹{seasonalPlanning.projectedIncome.toLocaleString('en-IN')}
+                          ₹{(seasonalPlanning?.projectedIncome ?? 0).toLocaleString('en-IN')}
                         </p>
                       </div>
                       <div>
                         <p className="text-gray-600">Current Savings</p>
                         <p className="text-xl font-bold text-blue-600">
-                          ₹{seasonalPlanning.currentSavings.toLocaleString('en-IN')}
+                          ₹{(seasonalPlanning?.currentSavings ?? 0).toLocaleString('en-IN')}
                         </p>
                       </div>
                       <div>
                         <p className="text-gray-600">Net Position</p>
                         <p className={`text-xl font-bold ${
-                          (seasonalPlanning.projectedIncome - seasonalPlanning.totalNeeded) >= 0 
+                          ((seasonalPlanning?.projectedIncome ?? 0) - (seasonalPlanning?.totalNeeded ?? 0)) >= 0 
                             ? 'text-green-600' 
                             : 'text-red-600'
                         }`}>
-                          ₹{(seasonalPlanning.projectedIncome - seasonalPlanning.totalNeeded).toLocaleString('en-IN')}
+                          ₹{((seasonalPlanning?.projectedIncome ?? 0) - (seasonalPlanning?.totalNeeded ?? 0)).toLocaleString('en-IN')}
                         </p>
                       </div>
                     </div>
@@ -895,7 +910,7 @@ const SavingsGoalsPage = () => {
                             <div>
                               <h4 className="font-medium text-gray-900">{plan.name}</h4>
                               <p className="text-sm text-gray-600 capitalize">
-                                {plan.type.replace(/_/g, ' ')} • {plan.priority} priority
+                                {(plan.type || 'Other').replace(/_/g, ' ')} • {plan.priority} priority
                               </p>
                             </div>
                             <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">
@@ -905,7 +920,7 @@ const SavingsGoalsPage = () => {
                           <div className="grid grid-cols-2 gap-4 text-sm mb-3">
                             <div>
                               <p className="text-gray-600">Estimated Cost</p>
-                              <p className="font-semibold text-red-600">₹{plan.estimatedCost.toLocaleString('en-IN')}</p>
+                              <p className="font-semibold text-red-600">₹{(plan.estimatedCost ?? 0).toLocaleString('en-IN')}</p>
                             </div>
                             <div>
                               <p className="text-gray-600">Expected Return</p>

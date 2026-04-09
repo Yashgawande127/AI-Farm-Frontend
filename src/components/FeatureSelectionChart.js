@@ -132,19 +132,20 @@ const FeatureSelectionChart = () => {
         </div>
 
         {/* Main Bar Chart */}
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100">
+        <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 sm:p-6 border border-gray-100 overflow-x-auto">
           <div className="flex items-center justify-center mb-4">
-            <h5 className="text-lg font-semibold text-gray-700">Accuracy Comparison by Feature Selection Method</h5>
+            <h5 className="text-lg font-bold text-gray-800 text-center">Accuracy Comparison by Feature Selection Method</h5>
           </div>
-          <p className="text-gray-600 text-center text-sm mb-6">
+          <p className="text-gray-600 text-center text-sm mb-6 max-w-md mx-auto">
             Comparative performance of feature selection algorithms for crop prediction optimization
           </p>
 
           <svg 
             width="100%" 
-            height="400" 
+            height="auto" 
             viewBox="0 0 800 400"
-            className="overflow-visible"
+            preserveAspectRatio="xMidYMid meet"
+            className="min-w-[600px] lg:min-w-0"
           >
             {/* Background */}
             <rect width="800" height="400" fill="transparent"/>

@@ -35,31 +35,31 @@ const CropsReference = () => {
   });
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto px-2 sm:px-4">
       <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-6 sm:p-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 shadow-inner">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-white mb-2">
-                  Crop Intelligence Center
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-2 sm:mb-3 tracking-tight">
+                  Intelligence <span className="text-emerald-300">Hub</span>
                 </h2>
-                <p className="text-emerald-100 text-lg">
-                  Advanced cultivation insights and agricultural data
+                <p className="text-emerald-100 text-base sm:text-xl font-medium max-w-xl">
+                  Advanced cultivation insights and optimized agricultural data recommendations.
                 </p>
               </div>
             </div>
             
-            <div className="hidden md:flex items-center gap-4">
-              <div className="text-right text-white/80">
-                <div className="text-2xl font-bold">{allCrops.length}</div>
-                <div className="text-sm">Crop Varieties</div>
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="text-right text-white/90">
+                <div className="text-4xl font-black">{allCrops.length}</div>
+                <div className="text-sm font-bold uppercase tracking-wider">Varieties</div>
               </div>
             </div>
           </div>

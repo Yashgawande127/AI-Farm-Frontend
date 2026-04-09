@@ -234,7 +234,7 @@ const DashboardPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <Header />
       
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
         {/* Mobile Dashboard */}
         <div className="lg:hidden mb-8">
           <MobileDashboard 
@@ -245,17 +245,17 @@ const DashboardPage = () => {
         </div>
 
         {/* Desktop Dashboard Header */}
-        <div className="hidden lg:flex justify-between items-center mb-8">
+        <div className="hidden lg:flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 px-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Farm Dashboard</h1>
+            <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Farm Dashboard</h1>
             <p className="text-gray-600">Real-time insights and analytics for your farm operations</p>
           </div>
           
-          <div className="flex space-x-3">
+          <div className="flex flex-wrap items-center gap-3">
             <select
               value={selectedTimeframe}
               onChange={(e) => setSelectedTimeframe(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              className="px-4 py-2 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 shadow-sm text-sm font-medium"
             >
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>

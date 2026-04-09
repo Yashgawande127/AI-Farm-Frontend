@@ -94,9 +94,9 @@ const SignupPage = () => {
 
           {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="firstName" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                   First Name
                 </label>
                 <input
@@ -106,13 +106,13 @@ const SignupPage = () => {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                  className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                   placeholder="John"
                 />
               </div>
               
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="lastName" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                   Last Name
                 </label>
                 <input
@@ -122,14 +122,14 @@ const SignupPage = () => {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                  className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                   placeholder="Doe"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                 Email Address
               </label>
               <input
@@ -139,13 +139,13 @@ const SignupPage = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                 placeholder="john@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                 Password
               </label>
               <input
@@ -156,13 +156,13 @@ const SignupPage = () => {
                 onChange={handleInputChange}
                 required
                 minLength="6"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                 placeholder="At least 6 characters"
               />
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                 Confirm Password
               </label>
               <input
@@ -172,27 +172,27 @@ const SignupPage = () => {
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                 placeholder="Confirm your password"
               />
             </div>
 
-            <div className="flex items-start">
+            <div className="flex items-start px-1">
               <input
                 id="agreeToTerms"
                 name="agreeToTerms"
                 type="checkbox"
                 checked={formData.agreeToTerms}
                 onChange={handleInputChange}
-                className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded mt-1"
+                className="h-5 w-5 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded-lg mt-1 cursor-pointer"
               />
-              <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-gray-700">
+              <label htmlFor="agreeToTerms" className="ml-3 block text-sm font-medium text-gray-600 leading-relaxed cursor-pointer">
                 I agree to the{' '}
-                <Link to="/terms" className="text-green-600 hover:text-green-500">
+                <Link to="/terms" className="text-emerald-600 hover:text-emerald-700 font-bold decoration-2 hover:underline">
                   Terms and Conditions
                 </Link>
                 {' '}and{' '}
-                <Link to="/privacy" className="text-green-600 hover:text-green-500">
+                <Link to="/privacy" className="text-emerald-600 hover:text-emerald-700 font-bold decoration-2 hover:underline">
                   Privacy Policy
                 </Link>
               </label>
@@ -201,12 +201,12 @@ const SignupPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 px-6 rounded-2xl font-bold text-lg hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-4 focus:ring-emerald-500/30 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Creating Account...
+                  <div className="animate-spin rounded-full h-6 w-6 border-4 border-white/30 border-t-white mr-3"></div>
+                  <span>Creating Account...</span>
                 </div>
               ) : (
                 'Create Account'
@@ -215,10 +215,10 @@ const SignupPage = () => {
           </form>
 
           {/* Login Link */}
-          <div className="mt-8 text-center">
-            <p className="text-gray-600">
+          <div className="mt-10 text-center">
+            <p className="text-gray-500 font-medium">
               Already have an account?{' '}
-              <Link to="/login" className="text-green-600 hover:text-green-500 font-medium">
+              <Link to="/login" className="text-emerald-600 hover:text-emerald-700 font-black decoration-2 hover:underline transition-all">
                 Sign in here
               </Link>
             </p>

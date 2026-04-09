@@ -131,33 +131,30 @@ const CropPredictionPage = () => {
                     <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Soil Testing</h4>
-                      <p className="text-gray-600 text-sm">Get your soil tested for accurate NPK values and pH levels</p>
+                      <p className="text-gray-600 text-sm">Get your soil tested for accurate NPK values and pH levels for precise analysis.</p>
                     </div>
                   </div>
-                  
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Weather Data</h4>
-                      <p className="text-gray-600 text-sm">Use recent weather data for temperature, humidity, and rainfall</p>
+                      <p className="text-gray-600 text-sm">Use recent local weather patterns for temperature and rainfall inputs.</p>
                     </div>
                   </div>
                 </div>
-                
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">Local Conditions</h4>
-                      <p className="text-gray-600 text-sm">Consider your specific geographic location and microclimate</p>
+                      <h4 className="font-semibold text-gray-900">Crop Rotation</h4>
+                      <p className="text-gray-600 text-sm">Consider previous crops grown in the field to maintain soil health.</p>
                     </div>
                   </div>
-                  
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">Multiple Predictions</h4>
-                      <p className="text-gray-600 text-sm">Try different scenarios to compare crop options</p>
+                      <h4 className="font-semibold text-gray-900">Regular Monitoring</h4>
+                      <p className="text-gray-600 text-sm">Run predictions regularly as environmental conditions change over time.</p>
                     </div>
                   </div>
                 </div>
@@ -166,9 +163,9 @@ const CropPredictionPage = () => {
           </div>
         </main>
 
-        <footer className="mt-16 text-center">
-          <div className="border-t border-gray-200 pt-8">
-            <p className="text-gray-600 text-sm font-medium">
+        <footer className="mt-16 sm:mt-24 text-center">
+          <div className="border-t border-gray-200 pt-8 sm:pt-10">
+            <p className="text-gray-500 text-sm font-semibold">
               &copy; 2025 AI Farm - Intelligent Crop Recommendation System
             </p>
           </div>

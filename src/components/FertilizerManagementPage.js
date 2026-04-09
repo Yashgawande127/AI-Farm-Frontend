@@ -118,29 +118,29 @@ const FertilizerManagementPage = () => {
         
         {/* Page Header */}
         <div className="mb-8">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
                   Fertilizer Management
                 </span>
               </h1>
-              <p className="text-xl text-gray-600">
+              <p className="text-lg sm:text-xl text-gray-600">
                 Scientific approach to fertilizer optimization and application management
               </p>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-white rounded-lg shadow-md p-4 text-center">
-                <div className="text-2xl font-bold text-green-600">12</div>
-                <div className="text-sm text-gray-500">Active Fields</div>
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="flex-1 min-w-[100px] bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-green-600">12</div>
+                <div className="text-xs sm:text-sm text-gray-500">Active Fields</div>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-4 text-center">
-                <div className="text-2xl font-bold text-blue-600">8</div>
-                <div className="text-sm text-gray-500">Fertilizer Types</div>
+              <div className="flex-1 min-w-[100px] bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-blue-600">8</div>
+                <div className="text-xs sm:text-sm text-gray-500">Fertilizer Types</div>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-4 text-center">
-                <div className="text-2xl font-bold text-purple-600">94%</div>
-                <div className="text-sm text-gray-500">Efficiency Score</div>
+              <div className="flex-1 min-w-[100px] bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-4 text-center">
+                <div className="text-xl sm:text-2xl font-bold text-purple-600">94%</div>
+                <div className="text-xs sm:text-sm text-gray-500">Efficiency Score</div>
               </div>
             </div>
           </div>

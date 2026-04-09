@@ -80,30 +80,35 @@ const ResultDisplay = ({ prediction, inputData }) => {
       {/* Main Results Card */}
       <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
         {/* Crop Information Header */}
-        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-6 sm:p-10">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-10">
             {/* Crop Image & Basic Info */}
-            <div className="flex items-center gap-6">
-              <div className="relative">
+            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center sm:text-left">
+              <div className="relative transform hover:rotate-3 transition-transform duration-300">
                 {getCropImage(predicted_crop)}
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-xl border-2 border-white animate-pulse">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
               </div>
               
               <div className="text-white">
-                <h3 className="text-4xl font-bold mb-2 capitalize tracking-tight">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-3 capitalize tracking-tight leading-tight">
                   {cropInfo ? cropInfo.name : predicted_crop}
                 </h3>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="px-4 py-1 bg-white/20 rounded-full text-sm font-semibold backdrop-blur-sm">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-4">
+                  <span className="px-4 py-1 bg-white/20 border border-white/30 rounded-full text-sm font-bold backdrop-blur-md shadow-inner">
                     Optimal Match
                   </span>
+                  {cropInfo && (
+                    <span className="px-4 py-1 bg-emerald-500/30 border border-emerald-400/30 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider">
+                      Premium Quality
+                    </span>
+                  )}
                 </div>
                 {cropInfo && cropInfo.description && (
-                  <p className="text-emerald-100 leading-relaxed max-w-lg text-lg">
+                  <p className="text-emerald-50 font-medium leading-relaxed max-w-lg text-base sm:text-lg opacity-90">
                     {cropInfo.description}
                   </p>
                 )}
@@ -111,23 +116,29 @@ const ResultDisplay = ({ prediction, inputData }) => {
             </div>
 
             {/* Confidence Display */}
-            <div className="text-center lg:text-right">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-white/40">
-                <div className="text-white mb-3">
-                  <span className="text-sm font-medium opacity-90 block">Prediction Confidence</span>
-                  <span className="text-4xl font-bold">
-                    {Math.round(confidence * 100)}%
+            <div className="w-full lg:w-auto mt-4 lg:mt-0">
+              <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+                <div className="text-white text-center lg:text-left mb-4">
+                  <span className="text-xs sm:text-sm font-bold opacity-80 uppercase tracking-widest block mb-1">AI Confidence Score</span>
+                  <span className="text-4xl sm:text-5xl font-black tracking-tighter">
+                    {Math.round(confidence * 100)}<span className="text-2xl sm:text-3xl opacity-60 ml-1">%</span>
                   </span>
                 </div>
-                <div className="w-32 bg-white/30 rounded-full h-3 mb-3 overflow-hidden mx-auto lg:mx-0">
+                <div className="w-full lg:w-48 bg-black/20 rounded-full h-3 mb-4 overflow-hidden shadow-inner">
                   <div 
-                    className="h-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-1000"
+                    className="h-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(251,191,36,0.5)]"
                     style={{ width: `${confidence * 100}%` }}
                   ></div>
                 </div>
-                <span className="text-emerald-100 font-medium text-sm">
-                  {getConfidenceLabel(confidence)}
-                </span>
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-emerald-100">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                  </span>
+                  <span className="font-bold text-sm tracking-wide lowercase first-letter:uppercase">
+                    {getConfidenceLabel(confidence)}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

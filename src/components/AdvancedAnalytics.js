@@ -122,18 +122,20 @@ const AdvancedAnalytics = ({ selectedTimeframe, onExport }) => {
     <div className="space-y-6">
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Revenue vs Costs Analysis</h3>
-        <ResponsiveContainer width="100%" height={350}>
-          <AreaChart data={analyticsData.profitabilityData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="period" />
-            <YAxis />
-            <Tooltip formatter={(value) => [`₹${value.toLocaleString('en-IN')}`, '']} />
-            <Legend />
-            <Area type="monotone" dataKey="revenue" stackId="1" stroke="#10B981" fill="#10B981" fillOpacity={0.7} />
-            <Area type="monotone" dataKey="costs" stackId="2" stroke="#EF4444" fill="#EF4444" fillOpacity={0.7} />
-            <Line type="monotone" dataKey="profit" stroke="#3B82F6" strokeWidth={3} />
-          </AreaChart>
-        </ResponsiveContainer>
+        <div className="h-[300px] sm:h-[350px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={analyticsData.profitabilityData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="period" fontSize={10} tick={{fill: '#6B7280'}} />
+              <YAxis fontSize={10} tick={{fill: '#6B7280'}} />
+              <Tooltip formatter={(value) => [`₹${value.toLocaleString('en-IN')}`, '']} />
+              <Legend />
+              <Area type="monotone" dataKey="revenue" stackId="1" stroke="#10B981" fill="#10B981" fillOpacity={0.7} />
+              <Area type="monotone" dataKey="costs" stackId="2" stroke="#EF4444" fill="#EF4444" fillOpacity={0.7} />
+              <Line type="monotone" dataKey="profit" stroke="#3B82F6" strokeWidth={3} />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

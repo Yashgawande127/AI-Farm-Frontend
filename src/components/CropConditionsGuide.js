@@ -32,25 +32,37 @@ const CropConditionsGuide = ({ cropName }) => {
   ];
 
   const renderOverview = () => (
-    <div className="space-y-8">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
-        <div className="relative">
-          <img 
-            src={cropInfo.image} 
-            alt={cropInfo.name}
-            className="w-32 h-32 rounded-3xl object-cover shadow-2xl border-4 border-white/30"
-            onError={(e) => {
-              e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDNWMU05IDE5SDEwLjVNMTUgMTlIMTYuNU05IDIxSDEwLjVNMTUgMjFIMTYuNU0yMSAxMkgyME0xMiAyMVYyM00zIDEySDE0TTE0IDEyTDIxIDEyTTEyIDNWMU0xMiAzTDIxIDEyTTEyIDNMMTMgMTJNMTIgM0wxMSAxMiIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=';
-            }}
-          />
-          <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl blur-lg opacity-20 -z-10"></div>
+    <div className="space-y-8 sm:space-y-10">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+        <div className="relative group">
+          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white transform group-hover:rotate-3 transition-transform duration-500">
+            <img 
+              src={cropInfo.image} 
+              alt={cropInfo.name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDNWMU05IDE5SDEwLjVNMTUgMTlIMTYuNU05IDIxSDEwLjVNMTUgMjFIMTYuNU0yMSAxMkgyME0xMiAyMVYyM00zIDEySDE0TTE0IDEyTDIxIDEyTTEyIDNWMU0xMiAzTDIxIDEyTTEyIDNMMTMgMTJNMTIgM0wxMSAxMiIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=';
+              }}
+            />
+          </div>
+          <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-[2.5rem] blur-2xl opacity-20 -z-10 group-hover:opacity-40 transition-opacity duration-500"></div>
         </div>
         <div className="flex-1 text-center lg:text-left">
-          <h3 className="text-4xl font-bold text-gray-800 mb-4">{cropInfo.name}</h3>
-          <p className="text-gray-600 text-lg leading-relaxed mb-6">{cropInfo.description}</p>
-          <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-            <span className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-xl font-semibold text-sm">High Yield Potential</span>
-            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-xl font-semibold text-sm">Climate Resilient</span>
+          <h3 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4 tracking-tight leading-tight capitalize">
+            {cropInfo.name}
+          </h3>
+          <p className="text-gray-600 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 font-medium">
+            {cropInfo.description}
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div className="flex items-center gap-2 px-5 py-2.5 bg-emerald-50 text-emerald-700 rounded-2xl font-bold text-sm border-2 border-emerald-100 shadow-sm">
+              <span className="text-lg">📈</span>
+              High Yield Potential
+            </div>
+            <div className="flex items-center gap-2 px-5 py-2.5 bg-blue-50 text-blue-700 rounded-2xl font-bold text-sm border-2 border-blue-100 shadow-sm">
+              <span className="text-lg">🛡️</span>
+              Climate Resilient
+            </div>
           </div>
         </div>
       </div>

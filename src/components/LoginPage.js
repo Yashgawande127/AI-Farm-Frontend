@@ -65,7 +65,7 @@ const LoginPage = () => {
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                 Email Address
               </label>
               <input
@@ -75,13 +75,13 @@ const LoginPage = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2 ml-1">
                 Password
               </label>
               <input
@@ -91,24 +91,24 @@ const LoginPage = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
+                className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/10 focus:border-green-500 outline-none transition-all duration-300 text-gray-800 placeholder-gray-400"
                 placeholder="Enter your password"
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between px-1">
               <div className="flex items-center">
                 <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                  className="h-5 w-5 text-green-600 focus:ring-green-500 border-gray-300 rounded-lg cursor-pointer transition-colors"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label htmlFor="remember-me" className="ml-3 block text-sm font-medium text-gray-600 cursor-pointer">
                   Remember me
                 </label>
               </div>
-              <Link to="/forgot-password" className="text-sm text-green-600 hover:text-green-500">
+              <Link to="/forgot-password" title="Forgot Password" className="text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
                 Forgot password?
               </Link>
             </div>
@@ -116,12 +116,12 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 px-6 rounded-2xl font-bold text-lg hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-4 focus:ring-emerald-500/30 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Signing In...
+                  <div className="animate-spin rounded-full h-6 w-6 border-4 border-white/30 border-t-white mr-3"></div>
+                  <span>Signing In...</span>
                 </div>
               ) : (
                 'Sign In'
@@ -130,10 +130,10 @@ const LoginPage = () => {
           </form>
 
           {/* Sign Up Link */}
-          <div className="mt-8 text-center">
-            <p className="text-gray-600">
+          <div className="mt-10 text-center">
+            <p className="text-gray-500 font-medium">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-green-600 hover:text-green-500 font-medium">
+              <Link to="/signup" className="text-emerald-600 hover:text-emerald-700 font-black decoration-2 hover:underline transition-all">
                 Sign up here
               </Link>
             </p>
