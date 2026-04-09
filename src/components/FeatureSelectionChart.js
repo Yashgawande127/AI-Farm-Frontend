@@ -132,20 +132,13 @@ const FeatureSelectionChart = () => {
         </div>
 
         {/* Main Bar Chart */}
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 sm:p-6 border border-gray-100 overflow-x-auto">
-          <div className="flex items-center justify-center mb-4">
-            <h5 className="text-lg font-bold text-gray-800 text-center">Accuracy Comparison by Feature Selection Method</h5>
-          </div>
-          <p className="text-gray-600 text-center text-sm mb-6 max-w-md mx-auto">
-            Comparative performance of feature selection algorithms for crop prediction optimization
-          </p>
-
-          <svg 
-            width="100%" 
-            height="auto" 
-            viewBox="0 0 800 400"
-            preserveAspectRatio="xMidYMid meet"
-            className="min-w-[600px] lg:min-w-0"
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-3 sm:p-6 border border-gray-100 overflow-x-auto custom-scrollbar">
+            <div className="min-w-[600px] lg:min-w-0">
+              <svg 
+                width="100%" 
+                height="auto" 
+                viewBox="0 0 800 400"
+                preserveAspectRatio="xMidYMid meet"
           >
             {/* Background */}
             <rect width="800" height="400" fill="transparent"/>
@@ -345,6 +338,16 @@ const FeatureSelectionChart = () => {
               Feature Selection Methods Performance Comparison
             </text>
           </svg>
+          </div>
+          {/* Mobile scroll hint */}
+          <div className="mt-4 text-center lg:hidden">
+            <p className="text-xs text-gray-500 flex items-center justify-center gap-1 italic">
+              <svg className="w-3 h-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+              Scroll horizontally to see all methods
+            </p>
+          </div>
         </div>
 
         {/* Legend */}

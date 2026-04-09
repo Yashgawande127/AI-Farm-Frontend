@@ -383,14 +383,14 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
               </div>
               
               {/* Bar Chart Container */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 sm:p-6 border border-gray-100 overflow-x-auto">
-                <svg 
-                  width="100%" 
-                  height="auto" 
-                  viewBox="0 0 800 400"
-                  preserveAspectRatio="xMidYMid meet"
-                  className="min-w-[600px] lg:min-w-0"
-                >
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-3 sm:p-6 border border-gray-100 overflow-x-auto custom-scrollbar">
+                <div className="min-w-[500px] lg:min-w-0">
+                  <svg 
+                    width="100%" 
+                    height="auto" 
+                    viewBox="0 0 800 400"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
                   {/* Background */}
                   <rect width="800" height="400" fill="transparent"/>
                   
@@ -507,6 +507,16 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                     Performance Analysis for {predictedCrop}
                   </text>
                 </svg>
+                </div>
+                {/* Mobile scroll hint */}
+                <div className="mt-2 text-center lg:hidden">
+                  <p className="text-xs text-gray-500 flex items-center justify-center gap-1 italic">
+                    <svg className="w-3 h-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                    Scroll horizontally to see all models
+                  </p>
+                </div>
               </div>
               
               {/* Legend */}
@@ -549,7 +559,8 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                 </p>
                 
                 {/* Bar Graph Chart */}
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200">
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-3 sm:p-8 border border-gray-200 overflow-x-auto custom-scrollbar">
+                  <div className="min-w-[600px] lg:min-w-0">
                   {/* Chart container with proper baseline */}
                   <div className="flex">
                     {/* Y-axis labels */}
@@ -658,6 +669,16 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
                   {/* X-axis title */}
                   <div className="text-center mt-4 text-sm font-semibold text-gray-600">
                     Features
+                  </div>
+                  </div>
+                  {/* Mobile scroll hint */}
+                  <div className="mt-4 text-center lg:hidden">
+                    <p className="text-xs text-gray-500 flex items-center justify-center gap-1 italic">
+                      <svg className="w-3 h-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                      Scroll to view all features
+                    </p>
                   </div>
                 </div>
                 
