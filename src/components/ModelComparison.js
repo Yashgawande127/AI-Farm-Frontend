@@ -139,20 +139,23 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
   }
 
   // Extract data from appropriate source
-  let model_comparison, random_forest, decision_tree;
+  let model_comparison = {}, random_forest = {}, decision_tree = {};
+  
   if (useComprehensiveData) {
-    model_comparison = modelComparisonData.all_models;
+    model_comparison = modelComparisonData.all_models || {};
     random_forest = { confidence: 0.85, prediction: predictedCrop };
     decision_tree = { confidence: 0.92, prediction: predictedCrop };
-  } else {
-    ({ model_comparison, random_forest, decision_tree } = ensembleData);
+  } else if (ensembleData) {
+    model_comparison = ensembleData.model_comparison || {};
+    random_forest = ensembleData.random_forest || {};
+    decision_tree = ensembleData.decision_tree || {};
   }
   
   // Prepare data for comparison
   const models = [
     {
       name: 'Random Forest',
-      accuracy: model_comparison.random_forest?.accuracy || 0.995,
+      accuracy: model_comparison?.random_forest?.accuracy || 0.995,
       confidence: random_forest?.confidence || 0.85,
       prediction: random_forest?.prediction || predictedCrop,
       color: 'emerald',
@@ -160,7 +163,7 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
     },
     {
       name: 'Decision Tree',
-      accuracy: model_comparison.decision_tree?.accuracy || 0.966,
+      accuracy: model_comparison?.decision_tree?.accuracy || 0.966,
       confidence: decision_tree?.confidence || 0.92,
       prediction: decision_tree?.prediction || predictedCrop,
       color: 'blue',
@@ -168,41 +171,41 @@ const ModelComparison = ({ ensembleData, predictedCrop }) => {
     },
     {
       name: 'DeepAgYieldNet',
-      accuracy: model_comparison.deepagyieldnet?.accuracy || 0.982,
-      confidence: model_comparison.deepagyieldnet?.confidence || 0.89,
-      prediction: model_comparison.deepagyieldnet?.prediction || predictedCrop,
+      accuracy: model_comparison?.deepagyieldnet?.accuracy || 0.982,
+      confidence: model_comparison?.deepagyieldnet?.confidence || 0.89,
+      prediction: model_comparison?.deepagyieldnet?.prediction || predictedCrop,
       color: 'purple',
       description: 'Deep Agricultural Yield Network specialized for crop prediction'
     },
     {
       name: 'ShuffleNet V2',
-      accuracy: model_comparison.shufflenetv2?.accuracy || 0.975,
-      confidence: model_comparison.shufflenetv2?.confidence || 0.87,
-      prediction: model_comparison.shufflenetv2?.prediction || predictedCrop,
+      accuracy: model_comparison?.shufflenetv2?.accuracy || 0.975,
+      confidence: model_comparison?.shufflenetv2?.confidence || 0.87,
+      prediction: model_comparison?.shufflenetv2?.prediction || predictedCrop,
       color: 'indigo',
       description: 'Efficient neural network with channel shuffle operations'
     },
     {
       name: 'EfficientCapsNet',
-      accuracy: model_comparison.efficientcapsnet?.accuracy || 0.978,
-      confidence: model_comparison.efficientcapsnet?.confidence || 0.91,
-      prediction: model_comparison.efficientcapsnet?.prediction || predictedCrop,
+      accuracy: model_comparison?.efficientcapsnet?.accuracy || 0.978,
+      confidence: model_comparison?.efficientcapsnet?.confidence || 0.91,
+      prediction: model_comparison?.efficientcapsnet?.prediction || predictedCrop,
       color: 'pink',
       description: 'Capsule network for enhanced feature representation'
     },
     {
       name: 'LAD-Net',
-      accuracy: model_comparison.ladnet?.accuracy || 0.984,
-      confidence: model_comparison.ladnet?.confidence || 0.93,
-      prediction: model_comparison.ladnet?.prediction || predictedCrop,
+      accuracy: model_comparison?.ladnet?.accuracy || 0.984,
+      confidence: model_comparison?.ladnet?.confidence || 0.93,
+      prediction: model_comparison?.ladnet?.prediction || predictedCrop,
       color: 'teal',
       description: 'Location-Aware Dense Network for agricultural data'
     },
     {
       name: 'RegNet',
-      accuracy: model_comparison.regnet?.accuracy || 0.971,
-      confidence: model_comparison.regnet?.confidence || 0.86,
-      prediction: model_comparison.regnet?.prediction || predictedCrop,
+      accuracy: model_comparison?.regnet?.accuracy || 0.971,
+      confidence: model_comparison?.regnet?.confidence || 0.86,
+      prediction: model_comparison?.regnet?.prediction || predictedCrop,
       color: 'orange',
       description: 'Regular Network with parameterized design principles'
     }

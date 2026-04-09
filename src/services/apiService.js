@@ -183,13 +183,16 @@ const apiService = {
         // Extract ensemble prediction data
         const ensembleData = resp.ensemble_prediction || {};
         const ensemble = ensembleData.ensemble || {};
+        const rf = ensembleData.random_forest || {};
+        const dt = ensembleData.decision_tree || {};
         
         // Normalize response to match expected structure
+        // Fallback chain: ensemble -> random_forest -> decision_tree -> 'unknown'
         const normalized = {
           status: resp.status,
           data: {
-            predicted_crop: ensemble.prediction || resp.predicted_crop,
-            confidence: ensemble.confidence || resp.confidence || 0,
+            predicted_crop: ensemble.prediction || rf.prediction || dt.prediction || resp.predicted_crop || 'unknown',
+            confidence: ensemble.confidence || rf.confidence || dt.confidence || resp.confidence || 0,
             recommendations: resp.recommendations || [],
             input_features: resp.input_features || {},
             ensemble_data: ensembleData // Include full ensemble data for comparison
@@ -535,6 +538,22 @@ const apiService = {
       return response.data;
     } catch (error) {
       console.error('Get model comparison error:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get feature selection performance data
+   * @param {boolean} full - Whether to perform a full analysis or use cached data
+   * @returns {Promise} - Promise resolving to feature selection performance data
+   */
+  async getFeatureSelectionPerformance(full = false) {
+    try {
+      console.log('Fetching feature selection performance data...');
+      const response = await api.get(`/feature-selection/performance?full=${full}`);
+      return response.data;
+    } catch (error) {
+      console.error('Get feature selection performance error:', error);
       throw error;
     }
   }

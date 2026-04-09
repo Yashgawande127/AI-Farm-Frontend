@@ -9,7 +9,12 @@ const ResultDisplay = ({ prediction, inputData }) => {
     return null;
   }
 
-  const { predicted_crop, confidence, recommendations } = prediction.data;
+  const { 
+    predicted_crop = 'unknown', 
+    confidence = 0, 
+    recommendations = [] 
+  } = prediction.data || {};
+  
   const cropInfo = getCropData(predicted_crop);
 
   // Crop image component

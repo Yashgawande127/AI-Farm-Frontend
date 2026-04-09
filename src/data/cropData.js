@@ -508,6 +508,7 @@ export const cropData = {
 
 // Helper function to get crop data by name
 export const getCropData = (cropName) => {
+  if (!cropName || typeof cropName !== 'string') return null;
   const normalizedName = cropName.toLowerCase().replace(/\s+/g, '').replace(/-/g, '');
   return cropData[normalizedName] || null;
 };

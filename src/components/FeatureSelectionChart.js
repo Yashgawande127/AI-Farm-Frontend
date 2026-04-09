@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import apiService from '../services/apiService';
 
 const FeatureSelectionChart = () => {
   const [featureData, setFeatureData] = useState(null);
@@ -15,14 +16,13 @@ const FeatureSelectionChart = () => {
   const fetchFeatureSelectionData = async () => {
     try {
       setLoading(true);
-      // First try cached data for faster loading
-      const response = await fetch('/api/feature-selection/performance?full=false');
-      const result = await response.json();
+      // Use apiService for consistent base URL and error handling
+      const response = await apiService.getFeatureSelectionPerformance(false);
       
-      if (result.status === 'success') {
-        setFeatureData(result.data);
+      if (response.status === 'success') {
+        setFeatureData(response.data);
       } else {
-        console.error('Failed to fetch feature selection data:', result.message);
+        console.error('Failed to fetch feature selection data:', response.message);
         // Use fallback data
         setFeatureData(getFallbackData());
       }

@@ -7,6 +7,11 @@ class WeatherService {
 
   // Get current weather conditions
   async getCurrentWeather(lat = 40.7128, lon = -74.0060) {
+    // If no real API key is provided, return mock data immediately to avoid 401 errors in console
+    if (!this.apiKey || this.apiKey === 'demo_key') {
+      return this.getMockWeatherData();
+    }
+
     try {
       const response = await fetch(
         `${this.baseUrl}/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`
@@ -36,6 +41,11 @@ class WeatherService {
 
   // Get 7-day weather forecast
   async getWeatherForecast(lat = 40.7128, lon = -74.0060) {
+    // If no real API key is provided, return mock data immediately to avoid 401 errors in console
+    if (!this.apiKey || this.apiKey === 'demo_key') {
+      return this.getMockForecastData();
+    }
+
     try {
       const response = await fetch(
         `${this.baseUrl}/forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`
